@@ -7,12 +7,6 @@ A production-style machine learning project that predicts customer churn and gen
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
 ![Status](https://img.shields.io/badge/Status-Ready-success)
 
-[![Open In Colab](https://google.com)](https://google.com)
-
-![Python](https://shields.io) ![Streamlit](https://shields.io) ![FastAPI](https://shields.io) ![Status](https://shields.io)
-
-[![Open In Colab](https://shields.io)](https://google.com)
-
 ## Overview
 
 Customer churn is a major business problem in telecom and subscription-based services. Losing existing customers is often more expensive than acquiring new ones, so early churn detection is critical.
