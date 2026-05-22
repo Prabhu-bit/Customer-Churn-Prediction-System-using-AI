@@ -6,6 +6,7 @@ A production-style machine learning project that predicts customer churn and gen
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
 ![Status](https://img.shields.io/badge/Status-Ready-success)
+
 [![Open In Colab](https://google.com)](https://google.com)
 
 ## Overview
