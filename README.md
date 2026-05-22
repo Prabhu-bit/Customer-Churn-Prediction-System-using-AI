@@ -106,3 +106,44 @@ If `OPENAI_API_KEY` is not set, the app still runs and uses a local fallback mes
 ```bash
 git clone <YOUR_REPO_URL>
 cd Internship_Project
+
+2. Create a virtual environment
+Windows:
+python -m venv .venv
+.venv\Scripts\activate
+
+3. Install dependencies
+pip install -r requirements.txt
+
+4. Set the OpenAI API key
+PowerShell:
+$env:OPENAI_API_KEY="your_api_key_here"
+Optional:
+$env:OPENAI_MODEL_NAME="gpt-4o-mini"
+
+If no API key is set, the app still runs and falls back to a local retention template.
+
+5. Verify required files
+Make sure these essential files are present:
+
+run_app.py
+streamlit_app.py
+fastapi_server.py
+final_optimized_churn_model_reduced.pkl
+model_metadata.json
+requirements.txt
+
+6. Run the project
+Recommended:
+python run_app.py
+
+This launcher:
+starts the correct Streamlit app
+opens the browser automatically
+stops cleanly when you press Enter in the terminal
+
+Direct Streamlit run:
+streamlit run 08_Applications_UI_API/streamlit_app.py
+
+FastAPI backend:
+python 08_Applications_UI_API/fastapi_server.py
