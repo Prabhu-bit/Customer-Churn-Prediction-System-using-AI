@@ -1,0 +1,4 @@
+Model,Hidden Layers,Test Accuracy,ROC-AUC Score,Precision,Recall,F1-Score,Training Time (s)
+"Initial Model (16,8)","(16, 8)",0.774,0.7654,0.5897,0.5134,0.549,2.99
+"Tuned Model (32,16)","(32, 16)",0.7732,0.7709,0.5821,0.5188,0.5488,5.87
+"Final Optimized (32,16,8)","(32, 16, 8)",0.764,0.7768,0.5656,0.484,0.5216,30.87

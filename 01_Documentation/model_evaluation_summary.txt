@@ -1,0 +1,69 @@
+
+================================================================================
+CUSTOMER CHURN PREDICTION - MACHINE LEARNING EVALUATION REPORT
+================================================================================
+
+📊 DATASET OVERVIEW
+--------------------------------------------------------------------------------
+  • Total Records: 7,043
+  • Features (after preprocessing): 30
+  • Target Classes: 2 (No Churn: 73.3%, Churn: 26.7%)
+  • Train-Test Split: 80-20
+  • Imbalance Ratio: 1:2.75
+
+🤖 MODELS EVALUATED
+--------------------------------------------------------------------------------
+  1. Initial Model: Hidden layers (16, 8)
+     - Test Accuracy: 77.40%
+     - ROC-AUC: 0.7654
+     - Training Time: 2.99s
+  
+  2. Tuned Model: Hidden layers (32, 16)
+     - Test Accuracy: 77.32%
+     - ROC-AUC: 0.7709
+     - Training Time: 5.87s
+  
+  3. Final Optimized: Hidden layers (32, 16, 8)
+     - Test Accuracy: 76.40%
+     - ROC-AUC: 0.7768 ⭐ (BEST)
+     - Training Time: 30.87s
+     - Precision: 0.5656
+     - Recall: 0.4840
+     - F1-Score: 0.5216
+
+🔍 HYPERPARAMETER TUNING RESULTS
+--------------------------------------------------------------------------------
+  • Best Configuration: Batch=16, Epochs=50, Neurons=16
+  • Best Accuracy Achieved: 78.89%
+  • Grid Search: 12 configurations tested
+  • Performance improvement from initial: +0.49%
+
+📈 TOP 5 MOST IMPORTANT FEATURES
+--------------------------------------------------------------------------------
+  1. PaymentMethod_Electronic check (0.2574)
+  2. gender_Male (0.2554)
+  3. Contract_One year (0.2479)
+  4. PaymentMethod_Credit card (automatic) (0.2468)
+  5. MultipleLines_Yes (0.2433)
+
+✅ KEY FINDINGS
+--------------------------------------------------------------------------------
+  • The final optimized model achieves 76.40% accuracy with best ROC-AUC score
+  • Payment method and gender are strong churn predictors
+  • Longer contracts reduce churn probability
+  • Model shows good discriminative ability (ROC-AUC: 0.7768)
+  • Hyperparameter tuning revealed batch size has minimal impact on accuracy
+
+📁 GENERATED OUTPUT FILES
+--------------------------------------------------------------------------------
+  ✓ model_comparison_dashboard.png - Static comparison dashboard
+  ✓ detailed_metrics_dashboard.png - Detailed metrics visualization
+  ✓ interactive_model_comparison.html - Interactive model metrics
+  ✓ hyperparameter_tuning_3d.html - 3D hyperparameter surface plot
+  ✓ feature_importance_interactive.html - Interactive feature importance
+  ✓ model_performance_sunburst.html - Hierarchical performance structure
+  ✓ model_metrics_report.csv - Detailed metrics table (saved)
+
+================================================================================
+Report Generated: 2026-05-10 14:37:09
+================================================================================

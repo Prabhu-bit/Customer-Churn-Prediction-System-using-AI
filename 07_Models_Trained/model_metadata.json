@@ -1,0 +1,21 @@
+{
+  "total_features": 12,
+  "features": [
+    "TotalCharges",
+    "MonthlyCharges",
+    "tenure",
+    "Contract",
+    "PaymentMethod",
+    "TechSupport",
+    "OnlineSecurity",
+    "PaperlessBilling",
+    "InternetService",
+    "gender",
+    "OnlineBackup",
+    "MultipleLines"
+  ],
+  "target_col": "Churn",
+  "model_accuracy": 0.76,
+  "model_roc_auc": 0.7768,
+  "model_path": "E:\\Internship_Project\\07_Models_Trained\\final_optimized_churn_model_reduced.pkl"
+}

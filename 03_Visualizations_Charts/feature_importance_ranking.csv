@@ -1,0 +1,16 @@
+Feature,Importance
+PaymentMethod_Electronic check,0.2574
+gender_Male,0.2554
+Contract_One year,0.2479
+PaymentMethod_Credit card (automatic),0.2468
+MultipleLines_Yes,0.2433
+tenure,0.2416
+SeniorCitizen,0.2406
+PaymentMethod_Mailed check,0.2275
+TotalCharges,0.2255
+StreamingTV_Yes,0.2247
+InternetService_Fiber optic,0.2234
+MonthlyCharges,0.2201
+OnlineSecurity_Yes,0.2189
+DeviceProtection_Yes,0.2176
+OnlineBackup_Yes,0.2165

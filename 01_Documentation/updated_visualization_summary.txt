@@ -1,0 +1,10 @@
+HUMAN-STYLE VISUALIZATION SUMMARY
+============================================
+Accuracy: 0.6794 (67.94%)
+Precision: 0.4198
+Recall: 0.5455
+F1 Score: 0.4744
+ROC-AUC: 0.7135
+Original features: 19
+Selected features: 12
+Removed features: 7
