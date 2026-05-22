@@ -102,7 +102,7 @@ If `OPENAI_API_KEY` is not set, the app still runs and uses a local fallback mes
 ## Setup
 
 1. Clone the repository
-   
+```bash
 git clone <YOUR_REPO_URL>
 cd Internship_Project
 
