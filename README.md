@@ -6,6 +6,9 @@ A production-style machine learning project that predicts customer churn and gen
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
 ![Status](https://img.shields.io/badge/Status-Ready-success)
+<a href="https://colab.research.google.com/github/Prabhu-bit/Customer-Churn-Prediction-System-using-AI/blob/main/Customer_churn_2.ipynb" target="_blank">
+  <img src="https://img.shields.io/badge/Open%20in%20Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white" alt="Open in Colab">
+</a>
 
 ## Overview
 
