@@ -14,6 +14,8 @@ import importlib.util
 
 # Get project root
 project_root = os.path.dirname(os.path.abspath(__file__))
+# This file lives at the repository root.
+repo_root = project_root
 
 
 def get_local_ip() -> str:
@@ -103,74 +105,109 @@ def ensure_streamlit_available() -> None:
         print(f"   {sys.executable} -m pip install streamlit")
         raise RuntimeError("Streamlit is required to run this launcher") from install_error
 
-print("\n" + "="*70)
-print("  🚀 CUSTOMER CHURN PREDICTION SYSTEM - UNIVERSAL LAUNCHER")
-print("="*70)
+def _find_streamlit_app() -> str | None:
+    candidates = [
+        os.path.join(repo_root, "08_Applications_UI_API", "streamlit_app.py"),
+        os.path.join(repo_root, "Applications_UI_API", "streamlit_app.py"),
+        os.path.join(repo_root, "Applications_UI_API", "streamlit_app.py"),
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return None
 
-# Check if streamlit app exists
-app_path = os.path.join(project_root, "08_Applications_UI_API", "streamlit_app.py")
-if not os.path.exists(app_path):
-    print(f"❌ Streamlit app not found at: {app_path}")
-    sys.exit(1)
 
-print("✓ Streamlit app found")
+def _find_model_file() -> str | None:
+    preferred = [
+        os.path.join(repo_root, "07_Models_Trained", "final_optimized_churn_model_reduced.pkl"),
+        os.path.join(repo_root, "Train_models", "final_optimized_churn_model_reduced.pkl"),
+        os.path.join(repo_root, "Train_models", "final_optimized_churn_model.pkl"),
+    ]
 
-# Check if model exists
-model_path = os.path.join(project_root, "07_Models_Trained", "final_optimized_churn_model_reduced.pkl")
-if not os.path.exists(model_path):
-    print(f"❌ Model not found at: {model_path}")
-    sys.exit(1)
+    for d in [os.path.join(repo_root, "Train_models"), os.path.join(repo_root, "07_Models_Trained")]:
+        if os.path.isdir(d):
+            for fn in os.listdir(d):
+                if fn.lower().endswith(".pkl"):
+                    preferred.append(os.path.join(d, fn))
 
-print("✓ Model file found")
+    for p in preferred:
+        if os.path.exists(p):
+            return p
+    return None
 
-ensure_streamlit_available()
 
-internal_url = "http://localhost:8501"
-external_url = f"http://{get_local_ip()}:8501"
+def main() -> int:
+    print("\n" + "=" * 70)
+    print("  🚀 CUSTOMER CHURN PREDICTION SYSTEM - UNIVERSAL LAUNCHER")
+    print("=" * 70)
 
-print("\n" + "-"*70)
-print("\n📱 Starting Streamlit App...")
-print(f"\n   Internal link: {internal_url}")
-print(f"\n   External link: {external_url}")
-print("\n   The app will automatically open in your default browser.")
-print("\n   Press Enter in this terminal to stop the app.")
-print("\n" + "-"*70)
+    app_path = _find_streamlit_app()
+    if not app_path:
+        print("❌ Streamlit app not found. Tried common locations:")
+        print("  - 08_Applications_UI_API/streamlit_app.py")
+        print("  - Applications_UI_API/streamlit_app.py")
+        return 1
 
-# Change to app directory
-app_dir = os.path.join(project_root, "08_Applications_UI_API")
+    print(f"✓ Streamlit app found at: {app_path}")
 
-# Run streamlit in a child process and keep this launcher alive until the user exits it.
-try:
-    streamlit_process = subprocess.Popen(
-        [
-            sys.executable,
-            "-m",
-            "streamlit",
-            "run",
-            app_path,
-            "--server.address=0.0.0.0",
-            "--server.headless=true",
-            "--browser.serverAddress=localhost",
-            "--logger.level=error",
-        ],
-        cwd=app_dir,
-    )
+    model_path = _find_model_file()
+    if not model_path:
+        print("❌ Model file not found. Looked for .pkl files in Train_models and 07_Models_Trained")
+        return 1
 
-    if not wait_for_port("127.0.0.1", 8501):
-        raise RuntimeError("Streamlit did not start on port 8501 within 30 seconds.")
+    print(f"✓ Model file found at: {model_path}")
 
-    print(f"\n   Ready: {internal_url}")
-    print(f"   Share this LAN URL: {external_url}")
-    webbrowser.open_new_tab(internal_url)
+    ensure_streamlit_available()
+
+    internal_url = "http://localhost:8501"
+    external_url = f"http://{get_local_ip()}:8501"
+
+    print("\n" + "-" * 70)
+    print("\n📱 Starting Streamlit App...")
+    print(f"\n   Internal link: {internal_url}")
+    print(f"\n   External link: {external_url}")
+    print("\n   The app will automatically open in your default browser.")
+    print("\n   Press Enter in this terminal to stop the app.")
+    print("\n" + "-" * 70)
+
+    app_dir = os.path.dirname(app_path)
 
     try:
-        input("\nLauncher is running. Press Enter to stop the app... ")
-    except KeyboardInterrupt:
-        print("\n")
+        streamlit_process = subprocess.Popen(
+            [
+                sys.executable,
+                "-m",
+                "streamlit",
+                "run",
+                app_path,
+                "--server.address=0.0.0.0",
+                "--server.headless=true",
+                "--browser.serverAddress=localhost",
+                "--logger.level=error",
+            ],
+            cwd=app_dir,
+        )
 
-    stop_streamlit_process(streamlit_process)
+        if not wait_for_port("127.0.0.1", 8501):
+            raise RuntimeError("Streamlit did not start on port 8501 within 30 seconds.")
 
-    print("\n✓ App stopped by user")
-except Exception as e:
-    print(f"\n❌ Error running app: {e}")
-    sys.exit(1)
+        print(f"\n   Ready: {internal_url}")
+        print(f"   Share this LAN URL: {external_url}")
+        webbrowser.open_new_tab(internal_url)
+
+        try:
+            input("\nLauncher is running. Press Enter to stop the app... ")
+        except KeyboardInterrupt:
+            print("\n")
+
+        stop_streamlit_process(streamlit_process)
+
+        print("\n✓ App stopped by user")
+        return 0
+    except Exception as e:
+        print(f"\n❌ Error running app: {e}")
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
