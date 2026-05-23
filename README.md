@@ -156,3 +156,11 @@ FastAPI backend:
 ```bash
 python 08_Applications_UI_API/fastapi_server.py
 ```
+This project is tested on Python 3.12. If you have Python 3.14, please install Python 3.12 before running the app.
+
+Setup steps:
+
+Create and activate a virtual environment.
+Install the required packages with pip install -r requirements.txt.
+Run the app using python run_app.py.
+If you face any installation issue, make sure you are not using Python 3.14 for this project.
