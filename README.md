@@ -2,7 +2,7 @@
 
 A production-style machine learning project that predicts customer churn and generates personalized AI retention emails for at-risk customers.
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
 ![Status](https://img.shields.io/badge/Status-Ready-success)
@@ -104,6 +104,8 @@ If `OPENAI_API_KEY` is not set, the app still runs and uses a local fallback mes
 
 ## Setup
 
+Recommended Python version: 3.12.
+
 1. Clone the repository
 ```bash
 git clone <YOUR_REPO_URL>
@@ -117,7 +119,8 @@ python -m venv .venv
 ```
 3. Install dependencies
 ```bash
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 4. Set the OpenAI API key
 ```bash
@@ -150,7 +153,7 @@ stops cleanly when you press Enter in the terminal
 
 Direct Streamlit run:
 ```bash
-streamlit run 08_Applications_UI_API/streamlit_app.py
+python -m streamlit run 08_Applications_UI_API/streamlit_app.py
 ```
 FastAPI backend:
 ```bash
