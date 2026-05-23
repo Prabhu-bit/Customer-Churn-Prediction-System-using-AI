@@ -104,22 +104,22 @@ If `OPENAI_API_KEY` is not set, the app still runs and uses a local fallback mes
 
 ## Setup
 
-1. Clone the repository
+1. Clone the repository into your preferred folder name :
 ```bash
-git clone <YOUR_REPO_URL>
-cd Internship_Project
+git clone <YOUR_REPO_URL> <YOUR_PROJECT_NAME>
+cd <YOUR_PROJECT_NAME>
 ```
-2. Create a virtual environment
+2. Create a virtual environment :
 ```bash
 Windows:
 python -m venv .venv
 .venv\Scripts\activate
 ```
-3. Install dependencies
+3. Install dependencies :
 ```bash
 pip install -r requirements.txt
 ```
-4. Set the OpenAI API key
+4. Set the OpenAI API key :
 ```bash
 PowerShell:
 $env:OPENAI_API_KEY="your_api_key_here"
