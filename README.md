@@ -117,7 +117,8 @@ python -m venv .venv
 ```
 3. Install dependencies :
 ```bash
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 4. Set the OpenAI API key :
 ```bash
