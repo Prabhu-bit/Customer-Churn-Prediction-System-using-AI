@@ -157,7 +157,8 @@ FastAPI backend:
 ```bash
 python 08_Applications_UI_API/fastapi_server.py
 ```
-This project is tested on Python 3.12. If you have Python 3.14, please install Python 3.12 before running the app.
+This project is tested on Python 3.12.  
+If you have Python 3.14, please install Python 3.12 before running the app.
 
 Setup steps:
 
