@@ -161,7 +161,7 @@ This project is tested on Python 3.12. If you have Python 3.14, please install P
 
 Setup steps:
 
-Create and activate a virtual environment.
-Install the required packages with pip install -r requirements.txt.
-Run the app using python run_app.py.
+1.Create and activate a virtual environment.
+2.Install the required packages with pip install -r requirements.txt.
+3.Run the app using python run_app.py.
 If you face any installation issue, make sure you are not using Python 3.14 for this project.
